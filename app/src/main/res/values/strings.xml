@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="Hello_Universe">0</string>
+    <string name="Slide_Bar">3</string>
+</resources>
