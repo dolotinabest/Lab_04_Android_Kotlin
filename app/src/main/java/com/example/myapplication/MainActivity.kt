@@ -1,15 +1,18 @@
 package com.example.myapplication
-
-import android.icu.number.IntegerWidth
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +26,11 @@ class MainActivity : AppCompatActivity() {
             insets
 
         }
+        val sendEmailButton: Button = findViewById(R.id.sendEmailButton)
+        sendEmailButton.setOnClickListener {
+            sendEmail()
+        }
+
         val seekBar = findViewById<SeekBar>(R.id.seekBar2)
         val progressTextView = findViewById<TextView>(R.id.textView2)
 
@@ -43,6 +51,7 @@ class MainActivity : AppCompatActivity() {
     fun toastMe(view: View){
         val myToast = Toast.makeText(this,"Hello Toast!",Toast.LENGTH_SHORT)
         myToast.show()
+
     }
     fun countMe(view: View) {
         val textView = findViewById<TextView>(R.id.textView)
@@ -50,6 +59,33 @@ class MainActivity : AppCompatActivity() {
         count++
         textView.text = count.toString()
     }
+    fun randomMe(view: View) {
+        val randomIntent = Intent(this, SecondActivity::class.java)
+        val textView = findViewById<TextView>(R.id.textView)
+        val countString = textView.text.toString()
+        val count = Integer.parseInt(countString)
+        randomIntent.putExtra(SecondActivity.TOTAL_COUNT, count)
+        startActivity(randomIntent)
+
+    }
+    fun storage(view: View) {
+        val storageIntent = Intent(this, StorageActivity::class.java)
+        startActivity(storageIntent)
+    }
 
 
-}
+
+        fun sendEmail() {
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                type = "message/rfc822" //
+                putExtra(Intent.EXTRA_EMAIL, arrayOf("recipient@example.com"))
+                putExtra(Intent.EXTRA_SUBJECT, "Тема письма")
+                putExtra(Intent.EXTRA_TEXT, "Текст письма")
+            }
+
+            val chooser = Intent.createChooser(intent, "Выберите приложение для отправки e-mail")
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(chooser)
+            }
+        }
+    }
