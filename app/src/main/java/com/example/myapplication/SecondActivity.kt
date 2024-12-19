@@ -33,3 +33,4 @@ class SecondActivity : AppCompatActivity() {
         textview_label.text = getString(R.string.random_heading,count)
     }
 }
+

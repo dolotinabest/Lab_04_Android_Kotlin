@@ -19,6 +19,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
+
     <!-- Input for file name -->
     <EditText
         android:id="@+id/editFile"

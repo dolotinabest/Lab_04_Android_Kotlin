@@ -6,6 +6,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.view.View
 
+
 class GyroListener : SensorEventListener {
 
     private val fraction = 1.0f / 1000000000.0f

@@ -21,6 +21,7 @@ class GyroView: androidx.appcompat.widget.AppCompatImageView {
         init()
     }
 
+
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         init()
     }

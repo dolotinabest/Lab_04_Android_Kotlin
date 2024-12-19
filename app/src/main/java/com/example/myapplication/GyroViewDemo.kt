@@ -8,6 +8,7 @@ import com.squareup.picasso.Picasso
 
 class GyroViewDemo : AppCompatActivity() {
 
+
     private var gyroView: GyroView? = null
     private val imageUrl = "https://images.pexels.com/photos/47358/ford-classic-car-automobile-car-47358.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
 
